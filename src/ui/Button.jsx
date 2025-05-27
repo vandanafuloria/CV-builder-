@@ -1,5 +1,4 @@
-export default function Button(props) {
-  const { icon, text } = props;
+export default function Button({ icon, text, onClick }) {
   console.log(icon, text);
   const color =
     "linear-gradient(305deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%)";

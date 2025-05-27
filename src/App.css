@@ -1,1 +1,14 @@
+.main-container{
+        display: flex
+;
+    justify-content: space-between;
+    border:gray 1px solid;
 
+}
+.information-section{
+    border: 1px solid palegoldenrod;
+
+}
+.preview-section{
+
+}

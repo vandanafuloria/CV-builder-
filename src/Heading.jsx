@@ -1,4 +1,8 @@
 import Button from "./Button";
+import Input from "./Information";
+import Form from "./form";
+// general info  form input
+
 export default function Heading(props) {
   const { heading, icon } = props;
 
