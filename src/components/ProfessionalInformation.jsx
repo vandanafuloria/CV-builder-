@@ -17,14 +17,14 @@ export default function ProfessionalInformation() {
           <label htmlFor="company">Company</label>
           <input id="shool" placeholder="Company" type="text"></input>
         </fieldset>
-        <fieldset>
-          <div className="dates">
+        <fieldset className="dates">
+          <div>
             <label htmlFor="start">Start Date</label>
-            <input type="date" id="start" />
+            <input type="text" id="start" placeholder="dd/mm/yy" />
           </div>
           <div>
             <label htmlFor="end">End Date</label>
-            <input type="date" id="end" />
+            <input type="text" id="end" placeholder="dd/mm/yy" />
           </div>
         </fieldset>
         <fieldset>

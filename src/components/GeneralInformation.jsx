@@ -1,7 +1,13 @@
+import { useState } from "react";
 import Button from "../ui/Button";
 import Heading from "../ui/Heading";
 
-export default function GeneralInformation() {
+export default function GeneralInformation({
+  setName,
+  setEmail,
+  setContact,
+  setLocation,
+}) {
   return (
     <div className="gen-info">
       <Heading
@@ -11,19 +17,45 @@ export default function GeneralInformation() {
       <form>
         <fieldset>
           <label htmlFor="name">Name</label>
-          <input id="name" placeholder="Enter Your Name"></input>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter Your Name"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          ></input>
         </fieldset>
         <fieldset>
-          <label htmlFor="email">Name</label>
-          <input id="email" placeholder="Enter Email"></input>
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="Enter Email"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          ></input>
         </fieldset>
         <fieldset>
-          <label htmlFor="phone">Name</label>
-          <input id="phone" placeholder="Contact Number"></input>
+          <label htmlFor="phone">Contact</label>
+          <input
+            id="phone"
+            placeholder="Contact Number"
+            onChange={(e) => {
+              setContact(e.target.value);
+            }}
+          ></input>
         </fieldset>
         <fieldset>
-          <label htmlFor="location">Name</label>
-          <input id="location" placeholder="Enter City"></input>
+          <label htmlFor="location">Location</label>
+          <input
+            id="location"
+            placeholder="Enter City"
+            onChange={(e) => {
+              setLocation(e.target.value);
+            }}
+          ></input>
         </fieldset>
         <Button icon={<i className="fa-solid fa-check"></i>} text={"Save"} />
       </form>
