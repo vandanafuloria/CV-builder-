@@ -1,89 +1,26 @@
 import { useState } from "react";
 
 import "./App.css";
-import Download from "./Download";
-import Button from "./Button";
-import Heading from "./Heading";
-import Form from "./form";
-import Information from "./Information";
+import Download from "./ui/Download";
+import Button from "./ui/Button";
+import Heading from "./ui/Heading";
+
 import GeneralInformation from "./components/GeneralInformation";
 import Resume from "./components/Resume";
+import EducationalInformation from "./components/EducationInforamation";
+import ProfessionalInformation from "./components/professionalInformation";
 
 function App() {
-  const generalInfo = [
-    {
-      label: "Full Name",
-      placeholder: "Enter your name",
-    },
-    {
-      label: "Email Address",
-      placeholder: "Enter your email",
-    },
-    {
-      label: "Phone Number",
-      placeholder: "Enter your phone number",
-    },
-    {
-      label: "City and Province",
-      placeholder: "City",
-    },
-  ];
-
-  const educationInfo = [
-    {
-      label: "Degree",
-      placeholder: "Degree",
-    },
-    {
-      label: "School",
-      placeholder: "Enter School/ University",
-    },
-    {
-      label: "City",
-      placeholder: "City",
-    },
-    {
-      label: "Country",
-      placeholder: "Country",
-    },
-  ];
-
   return (
-    <div className="main-container">
-      <div className="information-section">
+    <div className="container">
+      <div className="main-container">
         <Download />
         <GeneralInformation />
-        <Heading
-          heading={"General Information"}
-          icon={<i className="fa-solid fa-user"></i>}
-        />
-        <Form generalInfo={generalInfo} />
-
-        <Heading
-          heading={"Education Experience"}
-          icon={<i className="fa-solid fa-user-graduate"></i>}
-        />
-        <Form generalInfo={educationInfo} />
-        <Heading
-          heading={"Professional Experience"}
-          icon={<i className="fa-solid fa-briefcase"></i>}
-        />
+        <EducationalInformation />
+        <ProfessionalInformation />
       </div>
-      <div
-        className="preview-section"
-        style={{ backgroundColor: "black", flexBasis: "52%" }}
-      >
+      <div className="preview-container">
         <Resume />
-        <div
-          style={
-            {
-              // backgroundColor: "white",
-              // height: "100px",
-              // maxWidth: "900px",
-              // width: "100%",
-            }
-          }
-        ></div>
       </div>
     </div>
   );
