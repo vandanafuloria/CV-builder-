@@ -9,6 +9,11 @@ export default function Resume({
   country,
   start,
   end,
+  job,
+  company,
+  desc,
+  startDate,
+  endDate,
 }) {
   return (
     <div>
@@ -47,36 +52,18 @@ export default function Resume({
       <h2 className="resume-heading">Professional Experience</h2>
       <div className="exp">
         <div>
-          <h3>20202 </h3>
-          <p>Ui designger</p>
+          <h3>
+            {startDate} {endDate}
+          </h3>
+          <p>{job}</p>
         </div>
         <div>
-          <p className="company">Umbrella Inc.</p>
-          <p>UX & UI Designer</p>
-          <p>
-            Designed and prototyped user interface patterns for various clients
-            in various industries, ranging from self-service apps within the
-            telecommunications-sector to mobile games for IOS and Android
-          </p>
+          <p className="company">{company}</p>
+          <p>{job}</p>
+          <p className="desc">{desc}</p>
         </div>
       </div>
       <hr />
-
-      <div className="exp">
-        <div>
-          <h3>20202 </h3>
-          <p>Ui designger</p>
-        </div>
-        <div>
-          <p className="company">Umbrella Inc.</p>
-          <p>UX & UI Designer</p>
-          <p>
-            Designed and prototyped user interface patterns for various clients
-            in various industries, ranging from self-service apps within the
-            telecommunications-sector to mobile games for IOS and Android
-          </p>
-        </div>
-      </div>
     </div>
   );
 }

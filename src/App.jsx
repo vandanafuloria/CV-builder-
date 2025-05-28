@@ -22,6 +22,12 @@ function App() {
   const [country, setCountry] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  // profesional
+  const [job, setJob] = useState("");
+  const [company, setCompany] = useState("");
+  const [desc, setDesc] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   return (
     <div className="container">
@@ -41,7 +47,13 @@ function App() {
           setStart={setStart}
           setEnd={setEnd}
         />
-        <ProfessionalInformation />
+        <ProfessionalInformation
+          setJob={setJob}
+          setCompany={setCompany}
+          setDesc={setDesc}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+        />
       </div>
       <div className="preview-container">
         <Resume
@@ -55,6 +67,11 @@ function App() {
           start={start}
           end={end}
           country={country}
+          desc={desc}
+          job={job}
+          company={company}
+          startDate={startDate}
+          endDate={endDate}
         />
       </div>
     </div>
