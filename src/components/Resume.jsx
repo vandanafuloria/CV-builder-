@@ -15,6 +15,12 @@ export default function Resume({
   startDate,
   endDate,
 }) {
+  /*{
+        name, email, location,
+        degree : [{deg1}, {deg2}, ...],
+        job : [{job1}, {job2}, ..]
+    }
+    */
   return (
     <div>
       <div className="resume-header">
@@ -37,7 +43,7 @@ export default function Resume({
       <h2 className="resume-heading">Education</h2>
       <div className="edu">
         <div>
-          <p>
+          <p style={{ fontSize: "1rem", fontWeight: "bold" }}>
             {start} {end}
           </p>
           <p>
@@ -52,7 +58,7 @@ export default function Resume({
       <h2 className="resume-heading">Professional Experience</h2>
       <div className="exp">
         <div>
-          <h3>
+          <h3 style={{ fontSize: "1rem", fontWeight: "bold" }}>
             {startDate} {endDate}
           </h3>
           <p>{job}</p>

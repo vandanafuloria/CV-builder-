@@ -29,10 +29,14 @@ function App() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
+  // dropdown
+  const [isOpne, setIsOpen] = useState(false);
+
   return (
     <div className="container">
       <div className="main-container">
         <Download />
+        {/* <input value={name} onChange={(e) => setName(e.target.value)} /> */}
         <GeneralInformation
           setName={setName}
           setEmail={setEmail}

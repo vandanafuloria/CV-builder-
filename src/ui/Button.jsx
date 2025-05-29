@@ -6,12 +6,13 @@ export default function Button({ icon, text, onClick }) {
     <button
       style={{
         fontSize: "1rem",
-        padding: 5,
+        padding: 10,
         borderRadius: "10px",
         border: "lightgrey 1px solid",
         color: "lightgray",
         background: "rgba(9, 9, 121, 1)",
       }}
+      onClick={onClick}
     >
       {icon} {text}
     </button>
