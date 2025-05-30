@@ -18,11 +18,14 @@ function App() {
   // education states
 
   // profesional
-  const [job, setJob] = useState("");
-  const [company, setCompany] = useState("");
-  const [desc, setDesc] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [jobData, setJobData] = useState({
+    job: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+  });
+  const [employment, setEmployment] = useState([]);
 
   // state lifting
   const [formData, setFormData] = useState({
@@ -55,26 +58,22 @@ function App() {
           formData={formData}
         />
         <ProfessionalInformation
-          setJob={setJob}
-          setCompany={setCompany}
-          setDesc={setDesc}
-          setStartDate={setStartDate}
-          setEndDate={setEndDate}
+          jobData={jobData}
+          setJobData={setJobData}
+          employment={employment}
+          setEmployment={setEmployment}
         />
       </div>
       <div className="preview-container">
         <Resume
           educations={educations}
           formData={formData}
+          jobData={jobData}
+          employment={employment}
           name={name}
           email={email}
           contact={contact}
           location={location}
-          desc={desc}
-          job={job}
-          company={company}
-          startDate={startDate}
-          endDate={endDate}
         />
       </div>
     </div>

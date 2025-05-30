@@ -5,10 +5,8 @@ export default function Resume({
   location,
   formData,
   educations,
-
-  job,
-  company,
-  desc,
+  jobData,
+  employment,
 }) {
   console.log("this is resume", educations);
   return (
@@ -48,6 +46,7 @@ export default function Resume({
           <p>{formData.degree}</p>
         </div>
       </div>
+      {/** this is showing saved education details by rendering educations array */}
 
       <div className="filled-education-section">
         {educations.map((ed) => {
@@ -76,12 +75,13 @@ export default function Resume({
       <div className="exp">
         <div>
           <h3 style={{ fontSize: "1rem", fontWeight: "bold" }}></h3>
-          <p>{job}</p>
+          <p>{jobData.job}</p>
+          <p className="company">{jobData.company}</p>
+          <p>Start: {jobData.startDate}</p>
+          <p>End: {jobData.endDate}</p>
         </div>
         <div>
-          <p className="company">{company}</p>
-          <p>{job}</p>
-          <p className="desc">{desc}</p>
+          <p className="desc">{jobData.description}</p>
         </div>
       </div>
       <hr />

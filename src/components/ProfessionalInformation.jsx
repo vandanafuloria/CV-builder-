@@ -3,13 +3,31 @@ import Button from "../ui/Button";
 import Heading from "../ui/Heading";
 
 export default function ProfessionalInformation({
-  setJob,
-  setCompany,
-  setDesc,
-  setStartDate,
-  setEndDate,
+  jobData,
+  setJobData,
+  employment,
+  setEmployment,
 }) {
   const [isProfessionalVisible, setProfessionalVisible] = useState(false);
+  const [isButtonVisible, setIsButtonVisible] = useState(false);
+
+  function handleAddExperience() {
+    setProfessionalVisible(true);
+  }
+  function handleSaveExperience(e) {
+    e.preventDefault();
+    setEmployment([...employment, jobData]);
+    setProfessionalVisible(false);
+
+    setJobData({
+      job: "",
+      company: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+    });
+    console.log(employment);
+  }
 
   return (
     <div className="prof-info">
@@ -17,7 +35,8 @@ export default function ProfessionalInformation({
         icon={<i className="fa-solid fa-briefcase"></i>}
         heading={"Professional Experience"}
         onClick={() => {
-          setProfessionalVisible(!isProfessionalVisible);
+          // setProfessionalVisible(!isProfessionalVisible);
+          setIsButtonVisible(!isButtonVisible);
         }}
       />
       {isProfessionalVisible && (
@@ -28,7 +47,7 @@ export default function ProfessionalInformation({
               id="job"
               placeholder="Job Title"
               type="text"
-              onChange={(e) => setJob(e.target.value)}
+              onChange={(e) => setJobData({ ...jobData, job: e.target.value })}
             ></input>
           </fieldset>
           <fieldset>
@@ -37,7 +56,9 @@ export default function ProfessionalInformation({
               id="shool"
               placeholder="Company"
               type="text"
-              onChange={(e) => setCompany(e.target.value)}
+              onChange={(e) =>
+                setJobData({ ...jobData, company: e.target.value })
+              }
             ></input>
           </fieldset>
           <fieldset className="dates">
@@ -48,7 +69,7 @@ export default function ProfessionalInformation({
                 id="start"
                 placeholder="dd/mm/yy"
                 onChange={(e) => {
-                  setStartDate(e.target.value);
+                  setJobData({ ...jobData, startDate: e.target.value });
                 }}
               />
             </div>
@@ -58,7 +79,9 @@ export default function ProfessionalInformation({
                 type="text"
                 id="end"
                 placeholder="dd/mm/yy"
-                onChange={(e) => setEndDate(e.target.value)}
+                onChange={(e) =>
+                  setJobData({ ...jobData, endDate: e.target.value })
+                }
               />
             </div>
           </fieldset>
@@ -67,7 +90,7 @@ export default function ProfessionalInformation({
             <textarea
               id="desc"
               onChange={(e) => {
-                setDesc(e.target.value);
+                setJobData({ ...jobData, description: e.target.value });
               }}
             ></textarea>
           </fieldset>
@@ -76,9 +99,20 @@ export default function ProfessionalInformation({
             <Button
               icon={<i className="fa-solid fa-check"></i>}
               text={"Save"}
+              onClick={handleSaveExperience}
             />
           </div>
         </form>
+      )}
+      {isButtonVisible && (
+        <div className="edu-btn">
+          {" "}
+          <Button
+            text={"Add Experience"}
+            icon={<i className="fa-solid fa-plus"></i>}
+            onClick={handleAddExperience}
+          />
+        </div>
       )}
     </div>
   );

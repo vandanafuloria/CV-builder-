@@ -3,6 +3,12 @@
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+:root{
+    --primary-color: #0b0909;
+    --seconry-color: #44444c;
+    --tertiary-color: #8c8c8c;
+    --quarter-color: #d6d6d6;
+}
 .container{
     display: flex;
     justify-content: space-between;
@@ -80,7 +86,7 @@ textarea{
         width: 100%;
       
         background-color: white;
-
+        font-size: 0.5rem;
         padding: 0.8rem;
         border-top-right-radius: 10px;
         border-top-left-radius: 10px;
@@ -129,6 +135,7 @@ textarea{
     background-color: gray;
     color: white;
     padding: 1rem;
+    margin:1rem auto;
 }
 .company{
     font-weight: 700;
@@ -177,3 +184,15 @@ textarea{
     margin: 1rem 0;
     border:2px solid cornflowerblue;
 }
+.exp p{
+    
+  white-space: normal;       /* allows text to wrap */
+  word-wrap:break-word;     /* breaks long words if needed */
+  overflow-wrap:break-word;
+  width: 90%; /* modern alternative */
+  max-width: 400px;           /* ensures it doesn’t overflow container */
+}
+.exp div:first-child{
+    width: 25%;
+}
+
