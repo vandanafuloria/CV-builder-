@@ -33,8 +33,8 @@ export default function Resume({
       {/* this wiill show previw of filling inforamtion */}
 
       <div className="edu">
-        <div>
-          <p style={{ fontSize: "1rem", fontWeight: "bold" }}>
+        <div className="start-end">
+          <p>
             {formData.startDate} {formData.endDate}
           </p>
           <p>
@@ -53,7 +53,7 @@ export default function Resume({
           return (
             <div className="each-education edu">
               {" "}
-              <div>
+              <div className="start-end">
                 <p style={{ fontSize: "1rem", fontWeight: "bold" }}>
                   {ed.startDate} {ed.endDate}
                 </p>
@@ -74,15 +74,41 @@ export default function Resume({
       <h2 className="resume-heading">Professional Experience</h2>
       <div className="exp">
         <div>
-          <h3 style={{ fontSize: "1rem", fontWeight: "bold" }}></h3>
           <p>{jobData.job}</p>
           <p className="company">{jobData.company}</p>
-          <p>Start: {jobData.startDate}</p>
-          <p>End: {jobData.endDate}</p>
+          <div className="start-end">
+            <p>{jobData.startDate}</p>
+            <p> {jobData.endDate}</p>
+          </div>
         </div>
         <div>
           <p className="desc">{jobData.description}</p>
         </div>
+      </div>
+      <div className="saved-experience">
+        {employment.map((emp) => {
+          console.log(emp);
+          return (
+            <div
+              className="exp"
+              style={{
+                margin: "2rem auto",
+                borderTop: "2px solid gray",
+                padding: "10px",
+              }}
+            >
+              <div>
+                <p>{emp.job}</p>
+                <p className="company">{emp.company}</p>
+                <div className="start-end">
+                  <p>{emp.startDate}</p>
+                  <p> {emp.endDate}</p>
+                </div>
+              </div>
+              <p className="desc">{emp.description}</p>
+            </div>
+          );
+        })}
       </div>
       <hr />
     </div>

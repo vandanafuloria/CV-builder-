@@ -123,12 +123,13 @@ textarea{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
     
 
 }
 .exp{
     text-align: left;
+
 }
 
 .resume-heading{
@@ -189,10 +190,18 @@ textarea{
   white-space: normal;       /* allows text to wrap */
   word-wrap:break-word;     /* breaks long words if needed */
   overflow-wrap:break-word;
-  width: 90%; /* modern alternative */
+  width: 100%; /* modern alternative */
   max-width: 400px;           /* ensures it doesn’t overflow container */
 }
 .exp div:first-child{
     width: 25%;
+}
+.exp div:last-child{
+    width: 70%;
+}
+.start-end{
+    display: flex;
+    gap: 1rem;
+
 }
 
