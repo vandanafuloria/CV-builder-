@@ -2,37 +2,18 @@ import Heading from "../ui/Heading";
 import Button from "../ui/Button";
 import { useState } from "react";
 
-export default function EducationalInformation({
-  setDegree,
-  setSchool,
-  setCity,
-  setCountry,
-  setStart,
-  setEnd,
-}) {
-  const [educations, setEducations] = useState([
-    {
-      school: "University of California",
-      degree: "Bachelors of Commerce",
-      startDate: "24-56-3",
-      endDate: "",
-      location: "America",
-    },
-    {
-      school: "Standford University",
-      degree: "Bachelors of Commerce",
-      startDate: "24-56-3",
-      endDate: "",
-      location: "America",
-    },
-  ]);
+export default function EducationalInformation() {
+  const [educations, setEducations] = useState([]);
+
+  // setting new educational data which user has filled  to the array
 
   const [formData, setFormData] = useState({
     school: "",
     degree: "",
     startDate: "",
     endDate: "",
-    location: "",
+    city: "",
+    country: "",
   });
 
   const [isFormVisisble, setIsFormVisible] = useState(false); // list or form
@@ -43,17 +24,21 @@ export default function EducationalInformation({
   };
 
   const handleSaveEducation = () => {
+    // form will close
     setIsFormVisible(false);
-    setEducations([
-      ...educations,
-      {
-        school: "UNiversity of Singapore",
-        degree: "Bachelors of Commerce",
-        startDate: "24-56-3",
-        endDate: "",
-        location: "America",
-      },
-    ]);
+    setEducations([...educations, formData]);
+    console.log(educations, formData);
+    // resetting the values for empty form after save
+    setFormData({
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+
+      city: "",
+      country: "",
+    });
+    console.log(educations, formData);
   };
   // console.log(formData);
 
@@ -121,8 +106,9 @@ export default function EducationalInformation({
               id="city"
               placeholder="City"
               type="text"
+              value={formData.city}
               onChange={(e) => {
-                setCity(e.target.value);
+                setFormData({ ...formData, city: e.target.value });
               }}
             ></input>
           </fieldset>
@@ -132,8 +118,9 @@ export default function EducationalInformation({
               id="country"
               type="text"
               placeholder="Country"
+              value={formData.country}
               onChange={(e) => {
-                setCountry(e.target.value);
+                setFormData({ ...formData, country: e.target.value });
               }}
             ></input>
           </fieldset>
@@ -144,8 +131,9 @@ export default function EducationalInformation({
                 type="text"
                 id="start"
                 placeholder="dd/mm/yy"
+                value={formData.startDate}
                 onChange={(e) => {
-                  setStart(e.target.value);
+                  setFormData({ ...formData, startDate: e.target.value });
                 }}
               />
             </div>
@@ -155,8 +143,9 @@ export default function EducationalInformation({
                 type="text"
                 id="end"
                 placeholder="dd/mm/yy"
+                value={formData.endDate}
                 onChange={(e) => {
-                  setEnd(e.target.value);
+                  setFormData({ ...formData, endDate: e.target.value });
                 }}
               />
             </div>

@@ -28,7 +28,7 @@ export default function Resume({
         <div className="info">
           <span>
             <i className="fa-solid fa-envelope"></i>
-            <p>{email}</p>
+            <p> {email} </p>
           </span>
           <span>
             <i className="fa-solid fa-phone"></i>
