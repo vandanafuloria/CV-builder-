@@ -16,12 +16,7 @@ function App() {
   const [contact, setContact] = useState("");
   const [location, setLocation] = useState("");
   // education states
-  const [degree, setDegree] = useState("");
-  const [school, setSchool] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [start, setStart] = useState("");
-  const [end, setEnd] = useState("");
+
   // profesional
   const [job, setJob] = useState("");
   const [company, setCompany] = useState("");
@@ -29,8 +24,17 @@ function App() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  // dropdown
-  const [isOpne, setIsOpen] = useState(false);
+  // state lifting
+  const [formData, setFormData] = useState({
+    school: "",
+    degree: "",
+    startDate: "",
+    endDate: "",
+    city: "",
+    country: "",
+  });
+
+  const [educations, setEducations] = useState([]);
 
   return (
     <div className="container">
@@ -43,13 +47,12 @@ function App() {
           setContact={setContact}
           setLocation={setLocation}
         />
+
         <EducationalInformation
-          setDegree={setDegree}
-          setSchool={setSchool}
-          setCity={setCity}
-          setCountry={setCountry}
-          setStart={setStart}
-          setEnd={setEnd}
+          setEducations={setEducations}
+          educations={educations}
+          setFormData={setFormData}
+          formData={formData}
         />
         <ProfessionalInformation
           setJob={setJob}
@@ -61,16 +64,12 @@ function App() {
       </div>
       <div className="preview-container">
         <Resume
+          educations={educations}
+          formData={formData}
           name={name}
           email={email}
           contact={contact}
           location={location}
-          degree={degree}
-          school={school}
-          city={city}
-          start={start}
-          end={end}
-          country={country}
           desc={desc}
           job={job}
           company={company}

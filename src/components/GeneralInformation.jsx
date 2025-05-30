@@ -70,13 +70,6 @@ export default function GeneralInformation({
               }}
             ></input>
           </fieldset>
-          <div className="btn">
-            <Button text={"Cancel"} />
-            <Button
-              icon={<i className="fa-solid fa-check"></i>}
-              text={"Save"}
-            />
-          </div>
         </form>
       )}
     </div>

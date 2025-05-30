@@ -3,24 +3,14 @@ export default function Resume({
   email,
   contact,
   location,
-  degree,
-  school,
-  city,
-  country,
-  start,
-  end,
+  formData,
+  educations,
+
   job,
   company,
   desc,
-  startDate,
-  endDate,
 }) {
-  /*{
-        name, email, location,
-        degree : [{deg1}, {deg2}, ...],
-        job : [{job1}, {job2}, ..]
-    }
-    */
+  console.log("this is resume", educations);
   return (
     <div>
       <div className="resume-header">
@@ -41,26 +31,51 @@ export default function Resume({
         </div>
       </div>
       <h2 className="resume-heading">Education</h2>
+
+      {/* this wiill show previw of filling inforamtion */}
+
       <div className="edu">
         <div>
           <p style={{ fontSize: "1rem", fontWeight: "bold" }}>
-            {start} {end}
+            {formData.startDate} {formData.endDate}
           </p>
           <p>
-            {city} {country}
+            {formData.city} {formData.country}
           </p>
         </div>
         <div>
-          <h3>{school}</h3>
-          <p>{degree}</p>
+          <h3>{formData.school}</h3>
+          <p>{formData.degree}</p>
         </div>
       </div>
+
+      <div className="filled-education-section">
+        {educations.map((ed) => {
+          return (
+            <div className="each-education edu">
+              {" "}
+              <div>
+                <p style={{ fontSize: "1rem", fontWeight: "bold" }}>
+                  {ed.startDate} {ed.endDate}
+                </p>
+                <p>
+                  {ed.city} {ed.country}
+                </p>
+              </div>
+              <div>
+                <h3>{ed.school}</h3>
+                <p>{ed.degree}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ************************************************************/}
       <h2 className="resume-heading">Professional Experience</h2>
       <div className="exp">
         <div>
-          <h3 style={{ fontSize: "1rem", fontWeight: "bold" }}>
-            {startDate} {endDate}
-          </h3>
+          <h3 style={{ fontSize: "1rem", fontWeight: "bold" }}></h3>
           <p>{job}</p>
         </div>
         <div>

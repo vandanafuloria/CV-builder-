@@ -2,19 +2,13 @@ import Heading from "../ui/Heading";
 import Button from "../ui/Button";
 import { useState } from "react";
 
-export default function EducationalInformation() {
-  const [educations, setEducations] = useState([]);
-
+export default function EducationalInformation({
+  setEducations,
+  educations,
+  setFormData,
+  formData,
+}) {
   // setting new educational data which user has filled  to the array
-
-  const [formData, setFormData] = useState({
-    school: "",
-    degree: "",
-    startDate: "",
-    endDate: "",
-    city: "",
-    country: "",
-  });
 
   const [isFormVisisble, setIsFormVisible] = useState(false); // list or form
   const [isDegreeSection, setDegreeSection] = useState(false);
@@ -23,12 +17,13 @@ export default function EducationalInformation() {
     setIsFormVisible(true);
   };
 
-  const handleSaveEducation = () => {
+  const handleSaveEducation = (e) => {
+    e.preventDefault();
     // form will close
-    setIsFormVisible(false);
+
     setEducations([...educations, formData]);
-    console.log(educations, formData);
-    // resetting the values for empty form after save
+    setIsFormVisible(false);
+
     setFormData({
       school: "",
       degree: "",
@@ -38,7 +33,6 @@ export default function EducationalInformation() {
       city: "",
       country: "",
     });
-    console.log(educations, formData);
   };
   // console.log(formData);
 
@@ -55,12 +49,15 @@ export default function EducationalInformation() {
         educations.map((education) => (
           <div
             className="educations"
+            // wheneever this div will click , which is showing with school name
+            // all data of that form will set to the form;
             onClick={() => {
               setFormData({ ...education });
+
               setIsFormVisible(true);
             }}
           >
-            <h5> {education.school}</h5>
+            <h5> {education.degree}</h5>
           </div>
         ))}
 
@@ -83,9 +80,10 @@ export default function EducationalInformation() {
               placeholder="Degree"
               type="text"
               value={formData.degree}
-              onChange={(e) =>
-                setFormData({ ...formData, degree: e.target.value })
-              }
+              onChange={(e) => {
+                setFormData({ ...formData, degree: e.target.value });
+                getDataFromChild({ ...formData, degree: e.target.value });
+              }}
             />
           </fieldset>
           <fieldset>
@@ -95,9 +93,9 @@ export default function EducationalInformation() {
               placeholder="School / University"
               type="text"
               value={formData.school}
-              onChange={(e) =>
-                setFormData({ ...formData, school: e.target.value })
-              }
+              onChange={(e) => {
+                setFormData({ ...formData, school: e.target.value });
+              }}
             ></input>
           </fieldset>
           <fieldset>
