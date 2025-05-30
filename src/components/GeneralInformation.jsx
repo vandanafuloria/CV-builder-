@@ -7,8 +7,16 @@ export default function GeneralInformation({
   setEmail,
   setContact,
   setLocation,
+  setImg,
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  function handleImageChange(e) {
+    const file = e.target.files[0];
+    console.log(file);
+    if (file) {
+      setImg(URL.createObjectURL(file)); // creates a usable preview URL
+    }
+  }
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -69,6 +77,15 @@ export default function GeneralInformation({
                 setLocation(e.target.value);
               }}
             ></input>
+          </fieldset>
+          <fieldset>
+            <label htmlFor="photo">Profile image</label>
+            <input
+              type="file"
+              id="photo"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
           </fieldset>
         </form>
       )}

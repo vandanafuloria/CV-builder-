@@ -1,4 +1,5 @@
 export default function Resume({
+  img,
   name,
   email,
   contact,
@@ -12,7 +13,14 @@ export default function Resume({
   return (
     <div>
       <div className="resume-header">
-        <h1>{name}</h1>
+        <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
+          <img
+            src={img}
+            style={{ width: 80, borderRadius: "50%", height: 80 }}
+          />
+          <h1>{name}</h1>
+        </div>
+
         <div className="info">
           <span>
             <i className="fa-solid fa-envelope"></i>

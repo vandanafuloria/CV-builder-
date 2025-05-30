@@ -1,4 +1,5 @@
 import { useState } from "react";
+import image from "./assets/image.png";
 
 import "./App.css";
 import Download from "./ui/Download";
@@ -11,6 +12,7 @@ import EducationalInformation from "./components/EducationInforamation";
 import ProfessionalInformation from "./components/professionalInformation";
 
 function App() {
+  const [img, setImg] = useState(image);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
@@ -49,6 +51,7 @@ function App() {
           setEmail={setEmail}
           setContact={setContact}
           setLocation={setLocation}
+          setImg={setImg}
         />
 
         <EducationalInformation
@@ -74,6 +77,7 @@ function App() {
           email={email}
           contact={contact}
           location={location}
+          img={img}
         />
       </div>
     </div>
