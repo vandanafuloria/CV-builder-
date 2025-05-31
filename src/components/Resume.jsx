@@ -41,16 +41,18 @@ export default function Resume({
       {/* this wiill show previw of filling inforamtion */}
 
       <div className="edu">
-        <div className="start-end">
-          <p>
-            {formData.startDate} {formData.endDate}
-          </p>
-          <p>
+        <div className="left-side">
+          <p style={{ fontWeight: "bold" }}>
             {formData.city} {formData.country}
           </p>
+          <div className="start-end">
+            <p> {formData.startDate} </p>
+            <p> {formData.endDate}</p>
+          </div>
         </div>
-        <div>
-          <h3>{formData.school}</h3>
+
+        <div className="right-side">
+          <h3 style={{ margin: "0.5rem" }}>{formData.school}</h3>
           <p>{formData.degree}</p>
         </div>
       </div>
@@ -60,18 +62,21 @@ export default function Resume({
         {educations.map((ed) => {
           return (
             <div className="each-education edu">
-              {" "}
-              <div className="start-end">
-                <p style={{ fontSize: "1rem", fontWeight: "bold" }}>
-                  {ed.startDate} {ed.endDate}
-                </p>
-                <p>
-                  {ed.city} {ed.country}
-                </p>
-              </div>
-              <div>
-                <h3>{ed.school}</h3>
-                <p>{ed.degree}</p>
+              <div className="edu">
+                <div className="left-side">
+                  <p style={{ fontWeight: "bold" }}>
+                    {ed.city} {ed.country}
+                  </p>
+                  <div className="start-end">
+                    <p> {ed.startDate} </p>
+                    <p> {ed.endDate}</p>
+                  </div>
+                </div>
+
+                <div className="right-side">
+                  <h3 style={{ margin: "0.5rem" }}>{ed.school}</h3>
+                  <p>{ed.degree}</p>
+                </div>
               </div>
             </div>
           );

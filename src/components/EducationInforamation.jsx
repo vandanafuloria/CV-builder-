@@ -61,16 +61,6 @@ export default function EducationalInformation({
           </div>
         ))}
 
-      {isDegreeSection && (
-        <div className="edu-btn">
-          <Button
-            icon={<i className="fa-solid fa-plus"></i>}
-            text="Add Education"
-            onClick={handleAddEducation}
-          />
-        </div>
-      )}
-
       {isFormVisisble && (
         <form>
           <fieldset>
@@ -82,7 +72,6 @@ export default function EducationalInformation({
               value={formData.degree}
               onChange={(e) => {
                 setFormData({ ...formData, degree: e.target.value });
-                getDataFromChild({ ...formData, degree: e.target.value });
               }}
             />
           </fieldset>
@@ -158,6 +147,15 @@ export default function EducationalInformation({
             />
           </div>
         </form>
+      )}
+      {isDegreeSection && (
+        <div className="edu-btn">
+          <Button
+            icon={<i className="fa-solid fa-plus"></i>}
+            text="Add Education"
+            onClick={handleAddEducation}
+          />
+        </div>
       )}
     </div>
   );

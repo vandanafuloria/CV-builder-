@@ -9,7 +9,7 @@ export default function Download() {
 
   return (
     <div className="download">
-      <h5 style={{ fontSize: "1.5rem", margin: 5 }}>Save your resume</h5>
+      <h3>Save your resume</h3>
       <Button icon={icon} text={text} onClick={handleDownload} />
     </div>
   );
