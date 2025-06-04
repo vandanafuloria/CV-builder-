@@ -37,6 +37,7 @@ function App() {
     endDate: "",
     city: "",
     country: "",
+    id: "",
   });
 
   const [educations, setEducations] = useState([]);

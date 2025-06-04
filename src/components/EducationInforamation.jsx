@@ -1,6 +1,7 @@
 import Heading from "../ui/Heading";
 import Button from "../ui/Button";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function EducationalInformation({
   setEducations,
@@ -12,6 +13,7 @@ export default function EducationalInformation({
 
   const [isFormVisisble, setIsFormVisible] = useState(false); // list or form
   const [isDegreeSection, setDegreeSection] = useState(false);
+  const [isIdPresent, setIsIdPresent] = useState(false);
 
   const handleAddEducation = () => {
     setIsFormVisible(true);
@@ -19,9 +21,14 @@ export default function EducationalInformation({
 
   const handleSaveEducation = (e) => {
     e.preventDefault();
-    // form will close
 
-    setEducations([...educations, formData]);
+    const newEducation = {
+      ...formData,
+      id: uuidv4(), // generate unique ID here
+    };
+    console.log(formData);
+
+    setEducations([...educations, newEducation]);
     setIsFormVisible(false);
 
     setFormData({
@@ -32,9 +39,19 @@ export default function EducationalInformation({
 
       city: "",
       country: "",
+      id: "",
     });
   };
   // console.log(formData);
+  function handleDeleteEducation(e) {
+    e.preventDefault();
+    console.log(formData.id); // we got the clicked id;
+    const update = educations.filter((edu) => edu.id != formData.id);
+    setEducations(update); // all are except that delted one put in setEducation
+  }
+  function HandleCancel() {
+    setIsFormVisible(false);
+  }
 
   return (
     <div className="edu-info">
@@ -45,9 +62,11 @@ export default function EducationalInformation({
           setDegreeSection(!isDegreeSection);
         }}
       />
+
       {isDegreeSection &&
         educations.map((education) => (
           <div
+            key={education.id}
             className="educations"
             // wheneever this div will click , which is showing with school name
             // all data of that form will set to the form;
@@ -55,6 +74,7 @@ export default function EducationalInformation({
               setFormData({ ...education });
 
               setIsFormVisible(true);
+              setIsIdPresent(true);
             }}
           >
             <h5> {education.degree}</h5>
@@ -137,14 +157,26 @@ export default function EducationalInformation({
               />
             </div>
           </fieldset>
-          <div className="btn">
-            <Button text={"Cancel"} />
 
-            <Button
-              icon={<i className="fa-solid fa-check"></i>}
-              text={"Save"}
-              onClick={handleSaveEducation}
-            />
+          <div className="btn">
+            <div>
+              {isIdPresent && ( // if the task is saved then only delete button will be visible
+                <Button
+                  icon={<i className="fa-solid fa-trash"></i>}
+                  text={"Delete"}
+                  onClick={handleDeleteEducation}
+                />
+              )}
+            </div>
+            <div>
+              {" "}
+              <Button text={"Cancel"} onClick={HandleCancel} />
+              <Button
+                icon={<i className="fa-solid fa-check"></i>}
+                text={"Save"}
+                onClick={handleSaveEducation}
+              />
+            </div>
           </div>
         </form>
       )}
