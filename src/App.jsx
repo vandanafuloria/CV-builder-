@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+
 import image from "./assets/image.png";
 
 import "./App.css";
@@ -12,11 +13,13 @@ import EducationalInformation from "./components/EducationInforamation";
 import ProfessionalInformation from "./components/professionalInformation";
 
 function App() {
+  const resumeRef = useRef();
   const [img, setImg] = useState(image);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
   const [location, setLocation] = useState("");
+
   // education states
 
   // profesional
@@ -45,7 +48,7 @@ function App() {
   return (
     <div className="container">
       <div className="main-container">
-        <Download />
+        <Download resumeRef={resumeRef} />
         {/* <input value={name} onChange={(e) => setName(e.target.value)} /> */}
         <GeneralInformation
           setName={setName}
@@ -79,6 +82,7 @@ function App() {
           contact={contact}
           location={location}
           img={img}
+          resumeRef={resumeRef}
         />
       </div>
     </div>
