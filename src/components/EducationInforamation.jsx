@@ -48,6 +48,18 @@ export default function EducationalInformation({
     console.log(formData.id); // we got the clicked id;
     const update = educations.filter((edu) => edu.id != formData.id);
     setEducations(update); // all are except that delted one put in setEducation
+
+    setFormData({
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+
+      city: "",
+      country: "",
+      id: "",
+    });
+    isIdPresent(false);
   }
   function HandleCancel() {
     setIsFormVisible(false);
@@ -60,6 +72,7 @@ export default function EducationalInformation({
         heading={"Educational Information"}
         onClick={() => {
           setDegreeSection(!isDegreeSection);
+          isIdPresent(false);
         }}
       />
 

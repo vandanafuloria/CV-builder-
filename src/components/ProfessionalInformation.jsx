@@ -20,7 +20,27 @@ export default function ProfessionalInformation({
     // form will open
     setProfessionalVisible(true);
   }
-  function HandleDeleteExperience() {}
+  function HandleDeleteExperience(e) {
+    e.preventDefault();
+    // here filter the deleted experiecne and rest will fill in new array, then setEmployment wiht new values
+    const updateEmployment = employment.filter(
+      (employ) => employ.id != jobData.id
+    );
+
+    setEmployment(updateEmployment);
+    // filter give an array that why no need to put updateEMplyoment in an arry;
+
+    setJobData({
+      // if deleted then form will be empty;
+      job: "",
+      company: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+      id: "",
+    });
+  }
+
   function handleSaveExperience(e) {
     e.preventDefault();
     const newEmployment = { ...jobData, id: uuidv4() };
@@ -38,6 +58,10 @@ export default function ProfessionalInformation({
       id: "",
     });
     console.log(employment);
+  }
+  function hideForm() {
+    // when user click on cancle, form will hide;
+    setProfessionalVisible(false);
   }
 
   return (
@@ -137,7 +161,7 @@ export default function ProfessionalInformation({
               </div>
             )}
             <div>
-              <Button text={"Cancle"} />
+              <Button text={"Cancle"} onClick={hideForm} />
               <Button
                 icon={<i className="fa-solid fa-check"></i>}
                 text={"Save"}
