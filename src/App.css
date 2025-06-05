@@ -244,8 +244,8 @@ textarea{
     background-color: white;
 }
 .left-side{
-    flex-basis: 30%;
+    flex-basis: 40%;
 }
 .right-side{
-    flex-basis: 60%;
+    flex-basis: 55%;
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "../ui/Button";
 import Heading from "../ui/Heading";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ProfessionalInformation({
   jobData,
@@ -8,16 +9,25 @@ export default function ProfessionalInformation({
   employment,
   setEmployment,
 }) {
+  // form to filled the work experience
   const [isProfessionalVisible, setProfessionalVisible] = useState(false);
+  // button to add the experiecnt
   const [isButtonVisible, setIsButtonVisible] = useState(false);
+  const [isId, setIsId] = useState(false);
+  const [isExpSection, setIsExpSection] = useState(false);
 
   function handleAddExperience() {
+    // form will open
     setProfessionalVisible(true);
   }
+  function HandleDeleteExperience() {}
   function handleSaveExperience(e) {
     e.preventDefault();
-    setEmployment([...employment, jobData]);
+    const newEmployment = { ...jobData, id: uuidv4() };
+
+    setEmployment([...employment, newEmployment]);
     setProfessionalVisible(false);
+    setIsExpSection(true);
 
     setJobData({
       job: "",
@@ -25,6 +35,7 @@ export default function ProfessionalInformation({
       startDate: "",
       endDate: "",
       description: "",
+      id: "",
     });
     console.log(employment);
   }
@@ -39,6 +50,22 @@ export default function ProfessionalInformation({
           setIsButtonVisible(!isButtonVisible);
         }}
       />
+      {isExpSection &&
+        employment.map((emp) => (
+          <div
+            className="educations"
+            onClick={() => {
+              // there are multiple statesment thats why not the single function
+              setJobData({ ...emp });
+
+              setProfessionalVisible(true);
+              setIsId(true);
+            }}
+          >
+            <h5>{emp.company}</h5>
+          </div>
+        ))}
+
       {isProfessionalVisible && (
         <form>
           <fieldset>
@@ -47,6 +74,7 @@ export default function ProfessionalInformation({
               id="job"
               placeholder="Job Title"
               type="text"
+              value={jobData.job}
               onChange={(e) => setJobData({ ...jobData, job: e.target.value })}
             ></input>
           </fieldset>
@@ -56,6 +84,7 @@ export default function ProfessionalInformation({
               id="shool"
               placeholder="Company"
               type="text"
+              value={jobData.company}
               onChange={(e) =>
                 setJobData({ ...jobData, company: e.target.value })
               }
@@ -67,6 +96,7 @@ export default function ProfessionalInformation({
               <input
                 type="text"
                 id="start"
+                value={jobData.startDate}
                 placeholder="dd/mm/yy"
                 onChange={(e) => {
                   setJobData({ ...jobData, startDate: e.target.value });
@@ -78,6 +108,7 @@ export default function ProfessionalInformation({
               <input
                 type="text"
                 id="end"
+                value={jobData.endDate}
                 placeholder="dd/mm/yy"
                 onChange={(e) =>
                   setJobData({ ...jobData, endDate: e.target.value })
@@ -89,18 +120,30 @@ export default function ProfessionalInformation({
             <label htmlFor="desc">Description</label>
             <textarea
               id="desc"
+              value={jobData.description}
               onChange={(e) => {
                 setJobData({ ...jobData, description: e.target.value });
               }}
             ></textarea>
           </fieldset>
           <div className="btn">
-            <Button text={"Cancle"} />
-            <Button
-              icon={<i className="fa-solid fa-check"></i>}
-              text={"Save"}
-              onClick={handleSaveExperience}
-            />
+            {isId && (
+              <div>
+                <Button
+                  icon={<i className="fa-solid fa-trash"></i>}
+                  text={"Delete"}
+                  onClick={HandleDeleteExperience}
+                />
+              </div>
+            )}
+            <div>
+              <Button text={"Cancle"} />
+              <Button
+                icon={<i className="fa-solid fa-check"></i>}
+                text={"Save"}
+                onClick={handleSaveExperience}
+              />
+            </div>
           </div>
         </form>
       )}
