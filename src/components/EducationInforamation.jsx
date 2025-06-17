@@ -23,6 +23,10 @@ export default function EducationalInformation({
 
   const handleSaveEducation = (e) => {
     e.preventDefault();
+    if (formData.degree == "" || formData.school == "") {
+      alert("Please filled all relevent field");
+      return;
+    }
     if (formData.id !== "") {
       const filtered = educations.filter((edu) => edu.id != formData.id);
       setEducations([...filtered, formData]);
@@ -106,11 +110,12 @@ export default function EducationalInformation({
       {isFormVisisble && (
         <form>
           <fieldset>
-            <label htmlFor="degree">Degree</label>
+            <label htmlFor="degree">Degree *</label>
             <input
               id="degree"
               placeholder="Degree"
               type="text"
+              required
               value={formData.degree}
               onChange={(e) => {
                 setFormData({ ...formData, degree: e.target.value });
@@ -118,11 +123,12 @@ export default function EducationalInformation({
             />
           </fieldset>
           <fieldset>
-            <label htmlFor="shool">University</label>
+            <label htmlFor="shool">University*</label>
             <input
               id="shool"
               placeholder="School / University"
               type="text"
+              required
               value={formData.school}
               onChange={(e) => {
                 setFormData({ ...formData, school: e.target.value });
@@ -142,7 +148,7 @@ export default function EducationalInformation({
             ></input>
           </fieldset>
           <fieldset>
-            <label htmlFor="country">Name</label>
+            <label htmlFor="country">Country</label>
             <input
               id="country"
               type="text"

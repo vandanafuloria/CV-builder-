@@ -18,12 +18,11 @@ export default function Download({ resumeRef }) {
       jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
     };
     html2pdf().from(element).set(opt).save();
-   
   }
 
   return (
-    <div className="download">
-      <h3>Save your resume</h3>
+    <div className="download heading">
+      <h3>Save Your Resume</h3>
       <Button icon={icon} text={text} onClick={handleDownload} />
     </div>
   );
