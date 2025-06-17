@@ -33,6 +33,8 @@ export default function ProfessionalInformation({
     setEmployment(updateEmployment);
     // filter give an array that why no need to put updateEMplyoment in an arry;
 
+    setProfessionalVisible(false);
+    setIsExpSection(true);
     setJobData({
       // if deleted then form will be empty;
       job: "",
@@ -46,9 +48,15 @@ export default function ProfessionalInformation({
 
   function handleSaveExperience(e) {
     e.preventDefault();
-    const newEmployment = { ...jobData, id: uuidv4() };
+    console.log(jobData.id);
+    if (jobData.id !== null) {
+      const filtered = employment.filter((job) => job.id != jobData.id);
+      setEmployment([...filtered]);
+    } else {
+      const newEmployment = { ...jobData, id: uuidv4() };
 
-    setEmployment([...employment, newEmployment]);
+      setEmployment([...employment, newEmployment]);
+    }
     setProfessionalVisible(false);
     setIsExpSection(true);
 
@@ -87,6 +95,7 @@ export default function ProfessionalInformation({
 
               setProfessionalVisible(true);
               setIsId(true);
+              setIsExpSection(false);
             }}
           >
             <h5>{emp.company}</h5>
@@ -121,7 +130,7 @@ export default function ProfessionalInformation({
             <div>
               <label htmlFor="start">Start Date</label>
               <input
-                type="text"
+                type="date"
                 id="start"
                 value={jobData.startDate}
                 placeholder="dd/mm/yy"
@@ -133,7 +142,7 @@ export default function ProfessionalInformation({
             <div>
               <label htmlFor="end">End Date</label>
               <input
-                type="text"
+                type="date"
                 id="end"
                 value={jobData.endDate}
                 placeholder="dd/mm/yy"
