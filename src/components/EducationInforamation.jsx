@@ -86,6 +86,13 @@ export default function EducationalInformation({
 
           if (isDegreeSection == false) setIsFormVisible(false);
         }}
+        toggle={
+          isFormVisisble || isDegreeSection ? (
+            <i className="fa-solid fa-angle-up"></i>
+          ) : (
+            <i className="fa-solid fa-angle-down"></i>
+          )
+        }
       />
 
       {isDegreeSection &&

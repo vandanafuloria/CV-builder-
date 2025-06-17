@@ -79,6 +79,14 @@ export default function ProfessionalInformation({
   function hideForm() {
     // when user click on cancle, form will hide;
     setProfessionalVisible(false);
+    setJobData({
+      job: "",
+      company: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+      id: "",
+    });
   }
 
   return (
@@ -90,6 +98,13 @@ export default function ProfessionalInformation({
           setIsExpSection(!isExpSection);
           setIsButtonVisible(!isButtonVisible);
         }}
+        toggle={
+          isProfessionalVisible || isExpSection ? (
+            <i className="fa-solid fa-angle-up"></i>
+          ) : (
+            <i className="fa-solid fa-angle-down"></i>
+          )
+        }
       />
       {isExpSection &&
         employment.map((emp) => (

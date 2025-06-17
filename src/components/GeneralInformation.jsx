@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Button from "../ui/Button";
 import Heading from "../ui/Heading";
+const up = <i class="fa-solid fa-angle-up"></i>;
+const down = <i class="fa-solid fa-angle-down"></i>;
 
 export default function GeneralInformation({
   setName,
@@ -10,6 +12,7 @@ export default function GeneralInformation({
   setImg,
 }) {
   const [isOpen, setIsOpen] = useState(false);
+
   function handleImageChange(e) {
     const file = e.target.files[0];
     console.log(file);
@@ -20,11 +23,6 @@ export default function GeneralInformation({
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
-
-    // setIsOpen((old) => {
-    //   // calculation
-    //   return !old;
-    // });
   };
   return (
     <div className="gen-info">
@@ -32,6 +30,13 @@ export default function GeneralInformation({
         icon={<i className="fa-solid fa-user"></i>}
         heading={"General Information"}
         onClick={handleToggle}
+        toggle={
+          isOpen ? (
+            <i className="fa-solid fa-angle-up"></i>
+          ) : (
+            <i className="fa-solid fa-angle-down"></i>
+          )
+        }
       />
 
       {isOpen && (

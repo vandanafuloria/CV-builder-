@@ -1,7 +1,7 @@
 // general info  form input
 
 export default function Heading(props) {
-  const { heading, icon, onClick } = props;
+  const { heading, icon, onClick, toggle } = props;
 
   return (
     <div className="heading" onClick={onClick}>
@@ -10,9 +10,7 @@ export default function Heading(props) {
         <h3>{heading}</h3>
       </div>
       <div>
-        <span style={{ textAlign: "right" }}>
-          <i className="fa-solid fa-angle-down"></i>
-        </span>
+        <span style={{ textAlign: "right" }}>{toggle}</span>
       </div>
     </div>
   );
