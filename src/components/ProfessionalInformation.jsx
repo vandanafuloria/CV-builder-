@@ -49,10 +49,10 @@ export default function ProfessionalInformation({
   function handleSaveExperience(e) {
     e.preventDefault();
     console.log(jobData.id);
-    if (jobData.id !== null) {
+    if (jobData.id !== "") {
       const filtered = employment.filter((job) => job.id != jobData.id);
-      setEmployment([...filtered]);
-    } else {
+      setEmployment([...filtered, jobData]);
+    } else if (jobData.id == "") {
       const newEmployment = { ...jobData, id: uuidv4() };
 
       setEmployment([...employment, newEmployment]);
