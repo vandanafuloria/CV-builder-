@@ -19,7 +19,7 @@ Vite – Modern bundler for super-fast builds and HMR
 Pure CSS
 JavaScript (ES6+)
 
-## [👉 ---> Link]()
+## [👉 ---> Link](https://vandanafuloria.github.io/CV-builder-/)
 
 ### How to Use
 
