@@ -40,6 +40,7 @@
     overflow-y: scroll;
     width: 52%;
      max-width: 900px;
+     
     
        
     
@@ -244,7 +245,7 @@ textarea{
     background-color: white;
 }
 .left-side{
-    flex-basis: 40%;
+    flex-basis: 35%;
 }
 .right-side{
     flex-basis: 55%;

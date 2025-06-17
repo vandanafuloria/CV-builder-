@@ -18,7 +18,7 @@ export default function Download({ resumeRef }) {
       jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
     };
     html2pdf().from(element).set(opt).save();
-    console.log("pff ");
+   
   }
 
   return (

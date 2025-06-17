@@ -14,9 +14,11 @@ export default function EducationalInformation({
   const [isFormVisisble, setIsFormVisible] = useState(false); // list or form
   const [isDegreeSection, setDegreeSection] = useState(false);
   const [isIdPresent, setIsIdPresent] = useState(false);
+  const [isButtonVisible, setIsButtonVisible] = useState(false);
 
   const handleAddEducation = () => {
     setIsFormVisible(true);
+    setDegreeSection(false);
   };
 
   const handleSaveEducation = (e) => {
@@ -30,6 +32,7 @@ export default function EducationalInformation({
 
     setEducations([...educations, newEducation]);
     setIsFormVisible(false);
+    setDegreeSection(true);
 
     setFormData({
       school: "",
@@ -48,7 +51,8 @@ export default function EducationalInformation({
     console.log(formData.id); // we got the clicked id;
     const update = educations.filter((edu) => edu.id != formData.id);
     setEducations(update); // all are except that delted one put in setEducation
-
+    setIsFormVisible(false);
+    setDegreeSection(true);
     setFormData({
       school: "",
       degree: "",
@@ -71,8 +75,11 @@ export default function EducationalInformation({
         icon={<i className="fa-solid fa-user-graduate"></i>}
         heading={"Educational Information"}
         onClick={() => {
+          setIsButtonVisible(true);
           setDegreeSection(!isDegreeSection);
           isIdPresent(false);
+
+          if (isDegreeSection == false) setIsFormVisible(false);
         }}
       />
 
@@ -88,6 +95,7 @@ export default function EducationalInformation({
 
               setIsFormVisible(true);
               setIsIdPresent(true);
+              setDegreeSection(false);
             }}
           >
             <h5> {education.degree}</h5>
@@ -148,7 +156,7 @@ export default function EducationalInformation({
             <div>
               <label htmlFor="start">Start Date</label>
               <input
-                type="text"
+                type="date"
                 id="start"
                 placeholder="dd/mm/yy"
                 value={formData.startDate}
@@ -160,7 +168,7 @@ export default function EducationalInformation({
             <div>
               <label htmlFor="end">End Date</label>
               <input
-                type="text"
+                type="date"
                 id="end"
                 placeholder="dd/mm/yy"
                 value={formData.endDate}
@@ -195,11 +203,13 @@ export default function EducationalInformation({
       )}
       {isDegreeSection && (
         <div className="edu-btn">
-          <Button
-            icon={<i className="fa-solid fa-plus"></i>}
-            text="Add Education"
-            onClick={handleAddEducation}
-          />
+          {isButtonVisible && (
+            <Button
+              icon={<i className="fa-solid fa-plus"></i>}
+              text="Add Education"
+              onClick={handleAddEducation}
+            />
+          )}
         </div>
       )}
     </div>

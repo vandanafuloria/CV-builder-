@@ -16,9 +16,12 @@ export default function ProfessionalInformation({
   const [isId, setIsId] = useState(false);
   const [isExpSection, setIsExpSection] = useState(false);
 
+  console.log(isExpSection, isButtonVisible);
+
   function handleAddExperience() {
     // form will open
     setProfessionalVisible(true);
+    setIsExpSection(false);
   }
   function HandleDeleteExperience(e) {
     e.preventDefault();
@@ -70,7 +73,7 @@ export default function ProfessionalInformation({
         icon={<i className="fa-solid fa-briefcase"></i>}
         heading={"Professional Experience"}
         onClick={() => {
-          // setProfessionalVisible(!isProfessionalVisible);
+          setIsExpSection(!isExpSection);
           setIsButtonVisible(!isButtonVisible);
         }}
       />
