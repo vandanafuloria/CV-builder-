@@ -48,6 +48,12 @@ export default function ProfessionalInformation({
 
   function handleSaveExperience(e) {
     e.preventDefault();
+    if (jobData.job == "" || jobData.company == "") {
+      alert(
+        "Please fill all the Relevent details related to your previous experience"
+      );
+      return;
+    }
     console.log(jobData.id);
     if (jobData.id !== "") {
       const filtered = employment.filter((job) => job.id != jobData.id);
