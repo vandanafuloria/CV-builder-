@@ -23,14 +23,15 @@ export default function EducationalInformation({
 
   const handleSaveEducation = (e) => {
     e.preventDefault();
+    if (formData.id !== "") {
+      const filtered = educations.filter((edu) => edu.id != formData.id);
+      setEducations([...filtered, formData]);
+    } else if (formData.id == "") {
+      const newEdu = { ...formData, id: uuidv4() };
 
-    const newEducation = {
-      ...formData,
-      id: uuidv4(), // generate unique ID here
-    };
-    console.log(formData);
+      setEducations([...educations, newEdu]);
+    }
 
-    setEducations([...educations, newEducation]);
     setIsFormVisible(false);
     setDegreeSection(true);
 
@@ -48,7 +49,7 @@ export default function EducationalInformation({
   // console.log(formData);
   function handleDeleteEducation(e) {
     e.preventDefault();
-    console.log(formData.id); // we got the clicked id;
+
     const update = educations.filter((edu) => edu.id != formData.id);
     setEducations(update); // all are except that delted one put in setEducation
     setIsFormVisible(false);
