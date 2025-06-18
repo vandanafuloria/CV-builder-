@@ -90,7 +90,7 @@ export default function Resume({
 
           <h2 className="resume-heading">Professional Experience</h2>
           <div className="exp">
-            <div>
+            <div className="left-side">
               <p>{jobData.job}</p>
               <p className="company">{jobData.company}</p>
               <div className="start-end">
@@ -98,7 +98,7 @@ export default function Resume({
                 <p> {jobData.endDate}</p>
               </div>
             </div>
-            <div>
+            <div className="right-s">
               <p className="desc">{jobData.description}</p>
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function Resume({
                   padding: "10px",
                 }}
               >
-                <div>
+                <div className="left-side">
                   <p>{emp.job}</p>
                   <p className="company">{emp.company}</p>
                   <div className="start-end">
@@ -122,7 +122,9 @@ export default function Resume({
                     <p> {emp.endDate}</p>
                   </div>
                 </div>
-                <p className="desc">{emp.description}</p>
+                <div className="right-side">
+                  <p className="desc">{emp.description}</p>
+                </div>
               </div>
             ))}
           </div>

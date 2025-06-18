@@ -14,28 +14,41 @@ This is a Resume Builder application developed using React.js and bundled with V
 
 # 🔧 Technologies Used
 
-React JS – Component-based UI development
-Vite – Modern bundler for super-fast builds and HMR
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) Component-based UI development
+
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=FFD62E) Vite – Modern bundler for super-fast builds and HMR
+
 Pure CSS
+
 JavaScript (ES6+)
+
+📸 **Here are Some glimps**
+
+![img](./src/assets/image%20copy.png)
+
+📸 **Each section has a form**
+
+![img](./src/assets/cv.png)
+
+![gif](./src/assets/gif.gif)
 
 ## [👉 ---> Link](https://vandanafuloria.github.io/CV-builder-/)
 
 ### How to Use
 
-_Clone the Reposatory_
+`_Clone the Repository_`
 
 ```
 git clone https://github.com/vandanafuloria/resume-builder.git
 ```
 
-_Dependencies_
+`_Dependencies_`
 
 ```
 npm i
 ```
 
-_Live server_
+`_Start the Development Server_`
 
 ```
 npm run dev
